@@ -22,15 +22,14 @@
         <tr>
           <td>Departments</td>
           <td>Degree_courses</td>
-          <td>Many to Many</td>
+          <td>One to Many</td>
           <td>
             un dipartimento può avere più corsi di laurea, un corso di laurea
-            pùò appartenere a più dipartimenti
+            pùò appartenere solo a un dipartimento
           </td>
           <td>
-            corso di laurea in Biotecnologie / Bioinformatica uniscono il
-            Dipartimento di Bioscienze/Medicina con il Dipartimento di
-            Informatica o Ingegneria.
+            corso di laurea in ingegneria informatica è un corso di laurea solo
+            per il dipartimento di ingegneria
           </td>
         </tr>
         <tr>
@@ -49,14 +48,14 @@
         <tr>
           <td>courses</td>
           <td>teachers</td>
-          <td>Many to Many</td>
+          <td>One to Many</td>
           <td>
-            un corso pùo avere più insegnanti, un insegnanete può insegnare in
-            più corsi
+            un corso pùo avere più insegnanti, ma un insegnanete non può
+            insegnare in più corsi
           </td>
           <td>
-            Mario con competenze in matematica può insegnare sia nel corso di
-            analisi I che nel corso di analisi II anche con altri insegnanti
+            Mario insieme ad altri insegnanti sono docenti del corso di analisi
+            2 e non possono insegnare in altri corsi
           </td>
         </tr>
         <tr>
