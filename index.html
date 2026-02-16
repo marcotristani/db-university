@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DB University</title>
+
+    <link rel="stylesheet" href="./style/style.css" />
+  </head>
+  <body>
+    <header><h1>Logica Relazioni DB university</h1></header>
+    <main>
+      <img src="./img/db-university.jpg" alt="immagine collegamento DB" />
+      <table>
+        <thead>
+          <td>Entità_1</td>
+          <td>Entità_2</td>
+          <td>Tipo di relazione</td>
+          <td>Motivo</td>
+          <td>Esempio</td>
+        </thead>
+        <tr>
+          <td>Departments</td>
+          <td>Degree_courses</td>
+          <td>Many to Many</td>
+          <td>
+            un dipartimento può avere più corsi di laurea, un corso di laurea
+            pùò appartenere a più dipartimenti
+          </td>
+          <td>
+            corso di laurea in Biotecnologie / Bioinformatica uniscono il
+            Dipartimento di Bioscienze/Medicina con il Dipartimento di
+            Informatica o Ingegneria.
+          </td>
+        </tr>
+        <tr>
+          <td>Degree_courses</td>
+          <td>courses</td>
+          <td>Many to Many</td>
+          <td>
+            un corso di laurea può avere più corsi, un corso può appartenere a
+            più corsi di laurea
+          </td>
+          <td>
+            corso di chimica pùo essere un corso sia nel corso di laurea di
+            ingegneria che in quello di Biologia
+          </td>
+        </tr>
+        <tr>
+          <td>courses</td>
+          <td>teachers</td>
+          <td>Many to Many</td>
+          <td>
+            un corso pùo avere più insegnanti, un insegnanete può insegnare in
+            più corsi
+          </td>
+          <td>
+            Mario con competenze in matematica può insegnare sia nel corso di
+            analisi I che nel corso di analisi II anche con altri insegnanti
+          </td>
+        </tr>
+        <tr>
+          <td>courses</td>
+          <td>exam_appeals</td>
+          <td>One to Many</td>
+          <td>
+            un corso può avere più appelli d'esame, ma un appello d'esame non
+            può fare riferimento a più corsi, ma ad un singolo corso
+          </td>
+          <td>
+            l'appello di analisi di febbario in una data specifica fa
+            riferimento solo a un corso specifico, non può essere un appello
+            generico per più corsi
+          </td>
+        </tr>
+        <tr>
+          <td>students</td>
+          <td>Degree_courses</td>
+          <td>One to Many</td>
+          <td>
+            un corso di laureaha più studenti, ma uno studente non può
+            iscriversi a più corsi di laurea
+          </td>
+          <td>
+            il corso di ingegneria informatica può avere come studenti Mario,
+            Riccardo Antonio..., ma Mario può essere iscritto solo al corso di
+            ingegneria informatica e non altri corsi
+          </td>
+        </tr>
+        <tr>
+          <td>students</td>
+          <td>exam_appeals</td>
+          <td>Many to Many</td>
+          <td>
+            uno studente può iscriversi a più appelli d'esame, e un appello
+            d'esame ha più studenti partecipanti(nel pivot di collegamento
+            andiamo a salvare il voto del singolo studente con il suo
+            determinato ID che ha sostenuto il singolo appello d'esame con il
+            suo determinato ID)
+          </td>
+          <td>
+            Mario, Riccardo e Gianluca possono iscriversi tutti e tre a un
+            appello d'esame, un appello d'esame può essere sostenuto sia da
+            Mario, sia da Roberto e da Luigi. Quando Luigi con ID:7 va a
+            sostenere l'appello d'esame con ID:205 verrà salvato il voto che
+            luigi 7 ha preso nell'esame 205
+          </td>
+        </tr>
+      </table>
+    </main>
+  </body>
+</html>
