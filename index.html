@@ -8,102 +8,99 @@
     <link rel="stylesheet" href="./style/style.css" />
   </head>
   <body>
-    <header><h1>Logica Relazioni DB university</h1></header>
+    <header><h1>DB university</h1></header>
     <main>
-      <img src="./img/db-university.jpg" alt="immagine collegamento DB" />
+      <img src="./img/db-university.png" alt="immagine collegamento DB" />
       <table>
         <thead>
-          <td>Entità_1</td>
-          <td>Entità_2</td>
-          <td>Tipo di relazione</td>
-          <td>Motivo</td>
-          <td>Esempio</td>
+          <td>Richiesta</td>
+          <td>Codice</td>
+          <td>Risultato</td>
         </thead>
         <tr>
-          <td>Departments</td>
-          <td>Degree_courses</td>
-          <td>One to Many</td>
+          <td>Selezionare tutti gli studenti nati nel 1990</td>
           <td>
-            un dipartimento può avere più corsi di laurea, un corso di laurea
-            pùò appartenere solo a un dipartimento
+            SELECT *<br />
+            FROM `students`<br />
+            WHERE YEAR(`date_of_birth`) = 1990
           </td>
-          <td>
-            corso di laurea in ingegneria informatica è un corso di laurea solo
-            per il dipartimento di ingegneria
-          </td>
+          <td><a href="./results/1_SELECT.html">RISULTATO</a></td>
         </tr>
         <tr>
-          <td>Degree_courses</td>
-          <td>courses</td>
-          <td>Many to Many</td>
           <td>
-            un corso di laurea può avere più corsi, un corso può appartenere a
-            più corsi di laurea
+            Selezionare tutti i corsi che valgono più di 10 crediti(ordinati in
+            base ai cfu)
           </td>
           <td>
-            corso di chimica pùo essere un corso sia nel corso di laurea di
-            ingegneria che in quello di Biologia
+            SELECT *<br />
+            FROM `courses`<br />
+            WHERE `cfu` > 10<br />
+            ORDER BY `cfu`
           </td>
+          <td><a href="./results/2_SELECT.html">RISULTATO</a></td>
         </tr>
         <tr>
-          <td>courses</td>
-          <td>teachers</td>
-          <td>One to Many</td>
+          <td>Selezionare tutti gli studenti che hanno più di 30 anni</td>
           <td>
-            un corso pùo avere più insegnanti, ma un insegnanete non può
-            insegnare in più corsi
+            SELECT *<br />
+            FROM `students`<br />
+            WHERE `date_of_birth` <= '1996-02-17'<br />
+            ORDER BY `date_of_birth`
           </td>
-          <td>
-            Mario insieme ad altri insegnanti sono docenti del corso di analisi
-            2 e non possono insegnare in altri corsi
-          </td>
+          <td><a href="./results/3_SELECT.html">RISULTATO</a></td>
         </tr>
         <tr>
-          <td>courses</td>
-          <td>exam_appeals</td>
-          <td>One to Many</td>
           <td>
-            un corso può avere più appelli d'esame, ma un appello d'esame non
-            può fare riferimento a più corsi, ma ad un singolo corso
+            Selezionare tutti i corsi del primo semestre del primo anno di un
+            qualsiasi corso di laurea
           </td>
           <td>
-            l'appello di analisi di febbario in una data specifica fa
-            riferimento solo a un corso specifico, non può essere un appello
-            generico per più corsi
+            SELECT *<br />
+            FROM `courses`<br />
+            WHERE `year` = 1 AND `period` = 'I semestre'
           </td>
+          <td><a href="./results/4_SELECT.html">RISULTATO</a></td>
         </tr>
         <tr>
-          <td>students</td>
-          <td>Degree_courses</td>
-          <td>One to Many</td>
           <td>
-            un corso di laureaha più studenti, ma uno studente non può
-            iscriversi a più corsi di laurea
+            Selezionare tutti gli appelli d'esame che avvengono nel pomeriggio
+            (dopo le 14) del 20/06/2020 (21)
           </td>
           <td>
-            il corso di ingegneria informatica può avere come studenti Mario,
-            Riccardo Antonio..., ma Mario può essere iscritto solo al corso di
-            ingegneria informatica e non altri corsi
+            SELECT *<br />
+            FROM `exams`<br />
+            WHERE `date` = '2020-06-20' AND HOUR(`hour`) >= 14<br />
+            ORDER BY `hour`
           </td>
+          <td><a href="./results/5_SELECT.html">RISULTATO</a></td>
         </tr>
         <tr>
-          <td>students</td>
-          <td>exam_appeals</td>
-          <td>Many to Many</td>
+          <td>Selezionare tutti i corsi di laurea magistrale</td>
           <td>
-            uno studente può iscriversi a più appelli d'esame, e un appello
-            d'esame ha più studenti partecipanti(nel pivot di collegamento
-            andiamo a salvare il voto del singolo studente con il suo
-            determinato ID che ha sostenuto il singolo appello d'esame con il
-            suo determinato ID)
+            SELECT *<br />
+            FROM `degrees`<br />
+            WHERE `level` = 'magistrale'
+          </td>
+          <td><a href="./results/6_SELECT.html">RISULTATO</a></td>
+        </tr>
+        <tr>
+          <td>Da quanti dipartimenti è composta l'università?</td>
+          <td>
+            SELECT COUNT(*) AS 'Tot_departments'<br />
+            FROM `departments`
+          </td>
+          <td><a href="./results/7_SELECT.html">RISULTATO</a></td>
+        </tr>
+        <tr>
+          <td>
+            Quanti sono gli insegnanti che non hanno un numero di telefono?
           </td>
           <td>
-            Mario, Riccardo e Gianluca possono iscriversi tutti e tre a un
-            appello d'esame, un appello d'esame può essere sostenuto sia da
-            Mario, sia da Roberto e da Luigi. Quando Luigi con ID:7 va a
-            sostenere l'appello d'esame con ID:205 verrà salvato il voto che
-            luigi 7 ha preso nell'esame 205
+            SELECT COUNT(*) AS 'theachers_no_phone'<br />
+            FROM `teachers`<br />
+            WHERE `phone` IS NULL
           </td>
+          <td><a href="./results/8_SELECT.html">RISULTATO</a></td>
         </tr>
       </table>
     </main>
