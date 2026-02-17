@@ -102,6 +102,45 @@
           </td>
           <td><a href="./results/8_SELECT.html">RISULTATO</a></td>
         </tr>
+        <tr>
+          <td>Contare quanti iscritti ci sono stati ogni anno</td>
+          <td>
+            SELECT COUNT(*) AS 'STUDENTI_ISCRITTI', YEAR(`enrolment_date`) AS
+            'ANNO'<br />
+            FROM `students`<br />
+            GROUP BY YEAR(`enrolment_date`)
+          </td>
+          <td><a href="./results/1_GROUP_BY.html">RISULTATO</a></td>
+        </tr>
+        <tr>
+          <td>
+            Contare gli insegnanti che hanno l'ufficio nello stesso edificio
+          </td>
+          <td>
+            SELECT COUNT(*) AS 'Theachers', `office_address`<br />
+            FROM `teachers`<br />
+            GROUP BY `office_address`
+          </td>
+          <td><a href="./results/2_GROUP_BY.html">RISULTATO</a></td>
+        </tr>
+        <tr>
+          <td>Calcolare la media dei voti di ogni appello d'esame</td>
+          <td>
+            SELECT AVG(`vote`) AS 'media_voto', `exam_id`<br />
+            FROM `exam_student`<br />
+            GROUP BY `exam_id`
+          </td>
+          <td><a href="./results/3_GROUP_BY.html">RISULTATO</a></td>
+        </tr>
+        <tr>
+          <td>Contare quanti corsi di laurea ci sono per ogni dipartimento</td>
+          <td>
+            SELECT COUNT(*) AS 'degrees', `department_id`<br />
+            FROM `degrees`<br />
+            GROUP BY `department_id`
+          </td>
+          <td><a href="./results/4_GROUP_BY.html">RISULTATO</a></td>
+        </tr>
       </table>
     </main>
   </body>
