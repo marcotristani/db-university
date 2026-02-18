@@ -56,4 +56,20 @@
      WHERE `departments`.`name` = 'Dipartimento di Matematica'
 
 
+--BONUS: Selezionare per ogni studente il numero di tentativi sostenuti
+  per ogni esame, stampando anche il voto massimo. Successivamente,
+  filtrare i tentativi con voto minimo 18.
+
+
+     SELECT `student_id`,`students`.`surname`,`students`.`name`, `course_id` ,COUNT(*) AS `tentativi`, MAX(vote) AS `voto_max`
+     FROM `exam_student`
+     JOIN `exams` ON `exam_student`.`exam_id` = `exams`.`id`
+     JOIN `students` ON `exam_student`.`student_id` = `students`.`id`
+     JOIN `courses` ON `exams`.`course_id` = `courses`.`id` (unisco tabella corsi per recuperare il nome del corso)
+     WHERE `exam_student`.`vote` >= 18 (per vedere i tentativi in cui il voto è stato almeno 18)
+     GROUP BY `student_id`, `course_id`
+     ORDER BY `student_id`, `course_id`
+
+
+
      
